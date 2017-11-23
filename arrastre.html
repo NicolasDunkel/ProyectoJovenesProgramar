@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+
+<HEAD>
+<STYLE TYPE="text/css">
+<!--
+#CapaMovil {
+position:absolute;
+}
+//-->
+</STYLE>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var IE_X, IE_Y, AntX, AntY, RatonPulsado = false;
+function InicioArrastre(Capa) {
+if (event.button == 1) {
+/* Coordenadas auxiliares */
+AntX = CapaMovil.style.pixelLeft;
+AntY = CapaMovil.style.pixelTop;
+IE_X = event.clientX;
+IE_Y = event.clientY;
+RatonPulsado = true;
+document.onmousemove = Arrastrar;
+return false;
+}
+}
+function FinArrastre() {
+if (event.button == 1) {
+RatonPulsado = false;
+return false;
+}
+}
+function Arrastrar() {
+if (RatonPulsado) {
+document.all.CapaMovil.style.posLeft = AntX
++ event.clientX - IE_X;
+document.all.CapaMovil.style.posTop = AntY
++ event.clientY - IE_Y;
+return false;
+}
+}
+document.onmouseup = FinArrastre;
+
+//-->
+</SCRIPT>
+</HEAD>
+<BODY BGCOLOR=white>
+<DIV ID="CapaMovil" onMouseDown="InicioArrastre();"
+STYLE="left:100px;top:100px;">
+<IMG SRC="images/fondo.gif">
+</DIV>
+</BODY>
+</HTML>
